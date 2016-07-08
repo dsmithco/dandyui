@@ -63,7 +63,7 @@ a {
 
 section, header, footer, aside{
   padding: 1.2em 0 0;
-  overflow: auto;
+  overflow: visible;
   width: 100%;
   box-sizing : border-box;
 }
@@ -88,8 +88,10 @@ button, a.button {
   border-radius: 3px;
   text-align: center;
   display: inline-block;
-  margin: 0 0 3px;
-  box-shadow: 0px -20px 30px rgba(0,0,0,.15) inset;
+  margin: 0 0 2px;
+  transition: .2s box-shadow;
+  box-shadow: 0px -100px 0px rgba(0,0,0,.0) inset;
+
 }
 
 button:disabled, input:disabled, a.disabled {
@@ -140,6 +142,7 @@ nav {
   border-bottom: 1px solid #ddd;
   background-color: #f3f3f3;
   position: relative;
+  z-index: 9999;
 }
 
 nav .nav-container {
@@ -150,25 +153,32 @@ nav .nav-container {
 }
 
 .top-menu ul {
-  display: none;
   list-style-type: none;
   padding-left: 0px !important;
   margin-bottom: 0px !important;
   position: absolute;
-  z-index: 1;
+  z-index: 999;
   clear: both;
   width: 100%;
+  margin-top: -10px;
+  top: -10000px;
   text-align: center;
   left: 0;
   right: 0;
   background: #fafafa;
   transition: .2s;
   opacity: 0;
+  -webkit-transition: opacity margin-top .2s ease-in;
+   -moz-transition: opacity margin-top .2s ease-in;
+    -ms-transition: opacity margin-top .2s ease-in;
+     -o-transition: opacity margin-top .2s ease-in;
+        transition: opacity margin-top .2s ease-in;
 }
 
 .top-menu.open ul {
-  display: block;
   opacity: 1;
+  top: auto;
+  margin-top: 0px;
 }
 
 div.top-menu {
@@ -192,6 +202,7 @@ div.top-menu {
   padding: 1.15em 1.6em;
   margin:0px;
   box-shadow: 0px 100px 0px rgba(0,0,0,0) inset;
+  transition: .2s box-shadow;
 }
 
 .top-menu a.toggle {
@@ -210,12 +221,12 @@ div.top-menu {
 }
 
 .top-menu ul > li > a:active {
-  box-shadow: 0px -100px 0px rgba(0,0,0,.05) inset;
+  box-shadow: 0px 100px 0px rgba(0,0,0,.05) inset;
 }
 
 /* Columns */
 .row {
-  display: table;
+  display: block;
   clear: both;
   width: 100%;
   overflow: auto;
@@ -224,7 +235,6 @@ div.top-menu {
 
 /* For mobile phones: */
 [class*="columns-"] {
-    width: 100%;
     overflow: auto;
     width: 100%;
     box-sizing : border-box;
@@ -243,6 +253,19 @@ ul.top-menu > li {
 
 .hide-small {
   display: none;
+}
+
+pre {
+    display: block !important;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #fafafa;
+    margin: 1em 0;
+    padding: 1em;
+    white-space: pre  !important;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    overflow: auto  !important;
 }
 
 @media only screen and (min-width: 768px) {
@@ -269,6 +292,8 @@ ul.top-menu > li {
       right: auto;
       background: transparent;
       opacity: 1;
+      top: auto;
+      margin-top: 0px;
     }
 
     .top-menu ul > li {
@@ -338,15 +363,60 @@ label {
 }
 input[type='text'], textarea, select {
   display: block;
+  background: #fff;
   position: relative;
   padding: .6em .4em;
   font-size: 1em;
   width: 100%;
   border-radius: 2px;
   border: 1px solid #ccc;
-  box-shadow: 0px 2px 1px rgba(0,0,0,0.1) inset;
+  border-bottom: none;
+  box-shadow: 0px 1px 0px #666;
   margin: 0 0 .8em;
   box-sizing : border-box;
+  transition: .2s box-shadow ease-in;
+}
+input[type='text']:focus,
+textarea:focus,
+select:focus {
+  box-shadow: 0px 2px 0px #009bff;
+  outline: 0;
+}
+
+.input-help {
+  color: #555;
+  opacity: .5;
+  font-size: .9em;
+  margin-top: -.6em;
+  margin-bottom: .6em;
+  transition: .2s;
+}
+.errors .input-help,
+.input-help .errors {
+  color: #ff3300;
+}
+
+input[type='text']:focus + .input-help,
+textarea:focus + .input-help,
+select:focus + .input-help,
+input[type='text']:hover + .input-help,
+textarea:hover + .input-help,
+select:hover + .input-help {
+  opacity: 1;
+  margin-left: .1em;
+}
+
+.errors input[type='text'], .errors textarea, .errors select,
+input[type='text'].errors, textarea.errors, select.errors {
+  box-shadow: 0px 2px 0px #ff3300;
+}
+.errors label, label.errors {
+  color: #ff3300;
+}
+
+.success input[type='text'], .success textarea, .success select,
+input[type='text'].success, textarea.success, select.success {
+  box-shadow: 0px 2px 0px #00cc66;
 }
 
 /* style overrides */
