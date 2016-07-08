@@ -7,11 +7,11 @@
     <link rel="stylesheet" media="all" href="./src/dandy.css"/>
     <script src="./src/dandy.js"></script>
   </head>
-  <body>
+  <body class="">
 
     <nav>
-      <div class="container">
-        <div class="nav-container left">
+      <div class="container-full">
+        <div class="logo">
           <h3 class="nopad">Dandy <strong>UI</strong></h3>
         </div>
         <div class="top-menu right">
@@ -22,6 +22,16 @@
             </li>
             <li>
               <a href="#">About</a>
+            </li>
+            <li>
+              <div>
+                <a href="#" class=" button success-bg">Button</a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <a href="#" class=" button success-bg">Button</a>
+              </div>
             </li>
           </ul>
         </div>
@@ -86,15 +96,35 @@
                 Enter your first name in this field.
               </div>
             </div>
-            <div class="columns-3 errors">
+            <div class="columns-6 success">
               <label>Last Name</label>
               <input type="text" name="name" placeholder="Smith" value="">
             </div>
+          </div>
+          <div class="row">
+            <div class="columns-12">
+              <label>About you</label>
+              <textarea name="name" rows="8" cols="40"></textarea>
+              <div class="input-help">
+                Tell us a little bit about yourself
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="columns-6">
+              <label>Your Age</label>
+              <select class="" name="">
+                <option>12</option>
+                <option>122</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+
           <!-- </div>
           <div class="row"> -->
             <div class="columns-3">
-              <label>&nbsp;</label>
-              <a href="#" class="button full">Submit</a>
+              <a href="#" class="button large">Submit</a>
             </div>
           </div>
 

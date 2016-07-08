@@ -90,8 +90,12 @@ button, a.button {
   display: inline-block;
   margin: 0 0 2px;
   transition: .2s box-shadow;
-  box-shadow: 0px -100px 0px rgba(0,0,0,.0) inset;
+  box-shadow: 0px -100px 0px rgba(0,0,0,.0) inset, 0px -1px 0px rgba(0,0,0,.2) inset;
+  outline: 0;
+}
 
+button:focus, a.button:focus {
+  box-shadow: 0px -100px 0px rgba(0,0,0,.4) inset;
 }
 
 button:disabled, input:disabled, a.disabled {
@@ -122,6 +126,12 @@ button.small, a.button.small {
 
 }
 
+button.large, a.button.large {
+  font-size: 1.2em;
+  padding: .65em 2em;
+
+}
+
 button:not(.inverse):hover, a.button:not(.inverse):hover {
   box-shadow: 0px -100px 0px rgba(0,0,0,.5) inset;
   cursor: pointer;
@@ -133,6 +143,7 @@ button:active, a.button:active {
 
 .full {
   width: 100%;
+  display: block;
   box-sizing : border-box;
 }
 
@@ -145,10 +156,35 @@ nav {
   z-index: 9999;
 }
 
+body.fixed-nav > .container{
+  top: 3em;
+  position: relative;
+}
+
+.fixed-nav nav {
+  position: fixed;
+}
+
+.top{
+  top:0;
+}
+
+.bottom {
+  bottom:0
+}
+
 nav .nav-container {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  box-sizing : border-box;
+}
+
+nav .logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
   box-sizing : border-box;
 }
 
@@ -168,18 +204,20 @@ nav .nav-container {
   background: #fafafa;
   transition: .2s;
   opacity: 0;
-  -webkit-transition: opacity margin-top .2s ease-in;
-   -moz-transition: opacity margin-top .2s ease-in;
-    -ms-transition: opacity margin-top .2s ease-in;
-     -o-transition: opacity margin-top .2s ease-in;
-        transition: opacity margin-top .2s ease-in;
+  -webkit-transition: opacity .2s ease-in;
+     -moz-transition: opacity .2s ease-in;
+      -ms-transition: opacity .2s ease-in;
+       -o-transition: opacity .2s ease-in;
+          transition: opacity .2s ease-in;
 }
 
 .top-menu.open ul {
   opacity: 1;
-  top: auto;
+  top: 3.7em;
   margin-top: 0px;
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.4)
 }
+
 
 div.top-menu {
     display: block;
@@ -205,9 +243,26 @@ div.top-menu {
   transition: .2s box-shadow;
 }
 
+.top-menu ul > li > div > a  {
+  position: relative;
+  margin: .55em;
+  display: block;
+  box-sizing : border-box;
+}
+.top-menu ul > li > div {
+  box-sizing : border-box;
+}
+
 .top-menu a.toggle {
-  text-align: right;
+  float: right;
+  display: inline-block;
+  right: 0;
+  width: auto;
+  position: relative;
+  text-transform: uppercase;
   padding-right: 0px;
+  font-size: .9em;
+  margin-top: .1em;
   opacity: 1;
   transition: .2s;
 }
@@ -268,6 +323,8 @@ pre {
     overflow: auto  !important;
 }
 
+
+
 @media only screen and (min-width: 768px) {
 
     /*.top-menu {
@@ -300,6 +357,11 @@ pre {
       float: left;
       border-bottom: none;
 
+    }
+
+    nav .logo {
+      left: auto;
+      transform: translateY(-50%);
     }
 
     a.toggle {
@@ -357,10 +419,51 @@ form, .form {
 }
 
 label {
-  font-weight: 600;
+  font-weight: 500;
   padding: 0 0 .1em;
   display: inline-block;
+  transition: opacity .2s;
 }
+
+select {
+  height: 2.4375rem;
+  padding: 0.5rem;
+  border: 1px solid #cacaca;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  line-height: normal;
+  color: #0a0a0a;
+  background-color: #fefefe;
+  border-radius: 0;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb%28138, 138, 138%29'></polygon></svg>") !important;
+  -webkit-background-size: 9px 6px !important;
+  background-size: 9px 9px !important;
+  background-position: right -1em center !important;
+  -webkit-background-origin: content-box !important;
+  background-origin: content-box !important;
+  background-repeat: no-repeat !important;
+  padding-right: 1.5rem !important;
+}
+@media screen and (min-width: 0\0) {
+  select {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAYCAYAAACbU/80AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAIpJREFUeNrEkckNgDAMBBfRkEt0ObRBBdsGXUDgmQfK4XhH2m8czQAAy27R3tsw4Qfe2x8uOO6oYLb6GlOor3GF+swURAOmUJ+RwtEJs9WvTGEYxBXqI1MQAZhCfUQKRzDMVj+TwrAIV6jvSUEkYAr1LSkcyTBb/V+KYfX7xAeusq3sLDtGH3kEGACPWIflNZfhRQAAAABJRU5ErkJggg==") !important;
+  }
+  select:disabled {
+    background-color: #e6e6e6;
+    cursor: not-allowed;
+  }
+  select::-ms-expand {
+    display: none;
+  }
+  select[multiple] {
+    height: auto;
+    background-image: none;
+  }
+}
+
 input[type='text'], textarea, select {
   display: block;
   background: #fff;
@@ -376,11 +479,16 @@ input[type='text'], textarea, select {
   box-sizing : border-box;
   transition: .2s box-shadow ease-in;
 }
+
+textarea {
+  line-height: 1.4em;
+}
+
 input[type='text']:focus,
 textarea:focus,
 select:focus {
   box-shadow: 0px 2px 0px #009bff;
-  outline: 0;
+  outline: 0 !important;
 }
 
 .input-help {
@@ -399,9 +507,7 @@ select:focus {
 input[type='text']:focus + .input-help,
 textarea:focus + .input-help,
 select:focus + .input-help,
-input[type='text']:hover + .input-help,
-textarea:hover + .input-help,
-select:hover + .input-help {
+*:hover > .input-help {
   opacity: 1;
   margin-left: .1em;
 }
