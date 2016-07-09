@@ -314,22 +314,27 @@ div.top-menu {
   box-shadow: none;
   transition: .5s;
 }
-.top-menu.open > ul {
-  opacity: 1;
-  position: fixed;
-  top: 0em;
-  margin-top: 0px;
-  box-shadow: 0px 10px 100px rgba(0,0,0,0.9);
-  overflow: auto;
-  max-height: 90%;
-  width: 80%;
-  margin: auto;
-  top: 50%;
-  transform: translateY(-50%);
-  border-radius: 6px;
-}
+
 @media only screen and (max-width: 768px) {
 
+  .top-menu ul li:hover > ul
+  {
+    position: relative;
+  }
+  .top-menu.open > ul {
+    opacity: 1;
+    position: fixed;
+    top: 0em;
+    margin-top: 0px;
+    box-shadow: 0px 10px 100px rgba(0,0,0,0.9);
+    overflow: auto;
+    max-height: 90%;
+    width: 80%;
+    margin: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 6px;
+  }
 
 
   .top-menu ul ul li

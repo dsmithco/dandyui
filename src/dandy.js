@@ -45,11 +45,18 @@
     for (var i = 0; i < toggles.length; i++) {
       var toggle = toggles[i];
       toggle.onclick = function(e){
+
         var parent = toggle.parentNode;
         if(hasClass(parent, 'open')) {
-          removeClass(parent, 'open')
+          removeClass(parent, 'open');
         }else{
           parent.className += ' open';
+          document.addEventListener('click', function(event) {
+            var isClickInside = parent.contains(event.target);
+            if (!isClickInside) {
+              removeClass(parent, 'open');
+            }
+          });
         }
         e.preventDefault();
         return false;
