@@ -2,6 +2,7 @@
 /* minified css reset */
 article,aside,details,figcaption,figure,footer,header,hgroup,hr,menu,nav,section{display:block}a,hr{padding:0}abbr,address,article,aside,audio,b,blockquote,body,canvas,caption,cite,code,dd,del,details,dfn,div,dl,dt,em,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,p,pre,q,samp,section,small,span,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,ul,var,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:0 0}ins,mark{background-color:#ff9;color:#000}body{line-height:1}nav ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}a{margin:0;font-size:100%;vertical-align:baseline;background:0 0}ins{text-decoration:none}mark{font-style:italic;font-weight:700}del{text-decoration:line-through}abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}table{border-collapse:collapse;border-spacing:0}hr{height:1px;border:0;border-top:1px solid #ccc;margin:1em 0}input,select{vertical-align:middle}button,input[type='button'],input[type='submit']{background-color:transparent;border:0;font-size:1em;line-height:100%;padding:0;margin:0;}
 
+
 body {
   font-family: 'Helvetica Neue','Arial', sans-serif;
   font-size: 16px;
@@ -15,7 +16,7 @@ body {
 
 .container {
   margin: 0 auto;
-  padding: 0 2em;
+  padding: 0 1.5em;
   width: 960px;
   max-width: 100%;
   box-sizing : border-box;
@@ -24,7 +25,7 @@ body {
 
 .container-full {
   margin: 0 auto;
-  padding: 0 2em;
+  padding: 0 1.5em;
   max-width: 100%;
 }
 
@@ -88,9 +89,9 @@ button, a.button {
   border-radius: 3px;
   text-align: center;
   display: inline-block;
-  margin: 0 0 2px;
+  margin: 0 0 4px;
   transition: .2s box-shadow;
-  box-shadow: 0px -100px 0px rgba(0,0,0,.0) inset, 0px -1px 0px rgba(0,0,0,.2) inset;
+  box-shadow: 0px -100px 0px rgba(0,0,0,.0) inset, 0px -1px 0px rgba(0,0,0,.1) inset;
   outline: 0;
 }
 
@@ -182,9 +183,8 @@ nav .nav-container {
 
 nav .logo {
   position: absolute;
-  left: 50%;
   top: 50%;
-  transform: translateY(-50%) translateX(-50%);
+  transform: translateY(-50%);
   box-sizing : border-box;
 }
 
@@ -213,20 +213,28 @@ nav .logo {
 
 .top-menu.open ul {
   opacity: 1;
-  top: 3.7em;
+  position: fixed;
+  top: 0em;
   margin-top: 0px;
-  box-shadow: 0px 10px 10px rgba(0,0,0,0.4)
+  box-shadow: 0px 10px 100px rgba(0,0,0,0.9);
+  overflow: auto;
+  max-height: 90%;
+  width: 80%;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 6px;
 }
 
 .hamburger {
     border-bottom: 6px double black;
     border-top: 2px solid black;
     height: 2px;
-    left:5px;
-    opacity: .4;
+    left:1em;
+    opacity: .6;
     margin-top: 5px;
     position: absolute;
-    width:15px;
+    width:10px;
 }
 
 div.top-menu {
@@ -234,10 +242,10 @@ div.top-menu {
     position: absolute;
     left: 0;
     right: 0;
-    padding-right: 2em;
+    padding-right: 0em;
 }
 
-.top-menu ul > li {
+.top-menu.open ul > li:not(:last-child) {
   float: none;
   margin: 0 0 0;
   border-bottom: 1px solid #e9e9e9;
@@ -247,15 +255,15 @@ div.top-menu {
 .top-menu a.toggle {
   display: block;
   color: #333;
-  padding: 1.15em 1.6em;
   margin:0px;
+  padding: 1.15em 1em;
   box-shadow: 0px 100px 0px rgba(0,0,0,0) inset;
   transition: .2s box-shadow;
 }
 
 .top-menu ul > li > div > a  {
   position: relative;
-  margin: .55em;
+  margin: .6em 1em;
   display: block;
   box-sizing : border-box;
 }
@@ -272,11 +280,21 @@ div.top-menu {
   letter-spacing: -.04em;
   position: relative;
   text-transform: uppercase;
-  padding-right: 0px;
+  padding: 1.3em .7em 1.35em 2.1em;
+  top: -.1em;
+  border-radius: 0px;
   font-size: .9em;
   margin-top: .1em;
   opacity: 1;
   transition: .2s;
+  border-left: 0px solid rgba(0,0,0,0.3);
+  box-shadow: 0px 100px 0px rgba(0,0,0,0.05) inset;
+
+}
+
+.top-menu a.toggle:hover {
+  box-shadow: 0px 100px 0px rgba(0,0,0,.1) inset;
+
 }
 
 .top-menu.open a.toggle {
@@ -347,17 +365,18 @@ pre {
     }
 
     div.top-menu {
-        position: relative;;
+        position: relative;
         left: auto;
         right: auto;
         padding-right: 0;
     }
 
-    .top-menu ul > li:not(:last-child) > div > a  {
-      margin-right: .55em;
+    .top-menu ul > li:last-child > div > a  {
+      margin-right: 0;
     }
 
-    .top-menu ul {
+    .top-menu ul,
+    .top-menu.open ul {
       display: block;
       position: relative;
       text-align: center;
@@ -366,8 +385,31 @@ pre {
       background: transparent;
       opacity: 1;
       top: auto;
+      border-radius: 0px;
       margin-top: 0px;
+      box-shadow: none;
+      width: auto;
+      transform: translateY(0%);
+
     }
+
+
+/*
+    .top-menu.open ul {
+      opacity: 1;
+      position: fixed;
+      top: 0em;
+      margin-top: 0px;
+      box-shadow: 0px 10px 100px rgba(0,0,0,0.9);
+      overflow: auto;
+      max-height: 100%;
+      width: 80%;
+      margin: auto;
+      top: 50%;
+      transform: translateY(-50%);
+      border-radius: 6px;
+    }*/
+
 
     .top-menu ul > li {
       float: left;
@@ -375,10 +417,6 @@ pre {
 
     }
 
-    nav .logo {
-      left: auto;
-      transform: translateY(-50%);
-    }
 
     a.toggle {
       display: none !important;
@@ -480,6 +518,11 @@ select {
   }
 }
 
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+
 input[type='text'], textarea, select {
   display: block;
   background: #fff;
@@ -508,8 +551,8 @@ select:focus {
 }
 
 .input-help {
-  color: #555;
-  opacity: .5;
+  color: #333;
+  opacity: .4;
   font-size: .9em;
   margin-top: -.6em;
   margin-bottom: .6em;
