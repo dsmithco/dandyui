@@ -204,11 +204,11 @@ nav .logo {
   background: #fafafa;
   transition: .2s;
   opacity: 0;
-  -webkit-transition: opacity .2s ease-in;
-     -moz-transition: opacity .2s ease-in;
-      -ms-transition: opacity .2s ease-in;
-       -o-transition: opacity .2s ease-in;
-          transition: opacity .2s ease-in;
+  -webkit-transition: opacity .2s;
+     -moz-transition: opacity .2s;
+      -ms-transition: opacity .2s;
+       -o-transition: opacity .2s;
+          transition: opacity .2s;
 }
 
 .hamburger {

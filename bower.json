@@ -1,0 +1,25 @@
+{
+  "name": "dandyui",
+  "homepage": "https://github.com/dsmithco/dandyui",
+  "authors": [
+    "Dan Smith <dsmithco@gmail.com>"
+  ],
+  "description": "A UI framework following BASIC UX principles",
+  "main": "src/dandy.js",
+  "keywords": [
+    "BASIC",
+    "UX",
+    "UI",
+    "Framework",
+    "CSS",
+    "JS"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
