@@ -7,7 +7,7 @@
           setup_menu_toggle();
       }
       window.onresize = resizeContent;
-  }
+  } 
 
   function disableLinks(){
     var disabled_links = document.getElementsByClassName("disabled");

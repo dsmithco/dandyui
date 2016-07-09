@@ -5,7 +5,7 @@
     "Dan Smith <dsmithco@gmail.com>"
   ],
   "description": "A UI framework following BASIC UX principles",
-  "main": "src/dandy.js",
+  "main": ["src/dandy.js","src/dandy.css"],
   "keywords": [
     "BASIC",
     "UX",
